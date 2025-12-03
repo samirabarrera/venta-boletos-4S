@@ -119,6 +119,12 @@ export default function Eventos() {
     );
   }
 
+  const defaultImages = [
+  "../img/villancicos.jpg",
+  "../img/canto.jpg",
+  "../img/jazz.jpg"
+];
+
   return (
     <div className="eventos-page">
       <Container>
@@ -135,7 +141,7 @@ export default function Eventos() {
                 <Card className="shadow evento-card h-100">
                   <Card.Img
                     variant="top"
-                    src={evento.image_url || "../img/villancicos.jpg, /img/jazz.jpg, /img/rock.jpg"}
+                    src={evento.image_url || "defaultImages"}
                     alt={evento.title}
                     style={{ height: "200px", objectFit: "cover" }}
                   />

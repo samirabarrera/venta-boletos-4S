@@ -122,7 +122,7 @@ export default function Eventos() {
   return (
     <div className="eventos-page">
       <Container>
-        <h2 className="titulo-eventos">Próximos Eventos 🎵</h2>
+        <h2 className="titulo-eventos">Próximos Eventos</h2>
 
         {eventos.length === 0 ? (
           <Alert variant="info" className="text-center">
@@ -135,7 +135,7 @@ export default function Eventos() {
                 <Card className="shadow evento-card h-100">
                   <Card.Img
                     variant="top"
-                    src={evento.image_url || "/img/default-event.jpg"}
+                    src={evento.image_url || "../img/villancicos.jpg, /img/jazz.jpg, /img/rock.jpg"}
                     alt={evento.title}
                     style={{ height: "200px", objectFit: "cover" }}
                   />

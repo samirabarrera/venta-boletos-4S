@@ -1,0 +1,143 @@
+.perfil-page {
+  padding: 2rem 0;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perfil-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.perfil-card {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(184, 50, 128, 0.15);
+  overflow: hidden;
+}
+
+.perfil-card .card-body {
+  padding: 2.5rem;
+}
+
+/* Header del Perfil */
+.perfil-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(184, 50, 128, 0.1);
+}
+
+.perfil-avatar {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+  text-align: center;
+}
+
+.perfil-titulo {
+  color: #b83280;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Información del Usuario */
+.perfil-info {
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(184, 50, 128, 0.05), rgba(157, 43, 109, 0.05));
+  border-radius: 12px;
+  border-left: 4px solid #b83280;
+  text-align: center;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #9d2b6d;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-align: center;
+}
+
+.info-value {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+/* Acciones del Perfil */
+.perfil-actions {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.btn-cerrar-sesion {
+  background: linear-gradient(135deg, #b83280 0%, #9d2b6d 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.8rem 2.5rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(184, 50, 128, 0.3);
+}
+
+.btn-cerrar-sesion:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(184, 50, 128, 0.4);
+  background: linear-gradient(135deg, #9d2b6d 0%, #7d1f57 100%);
+}
+
+.btn-cerrar-sesion:active {
+  transform: translateY(-1px);
+}
+
+/* Animación de flotación */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .perfil-card .card-body {
+    padding: 1.5rem;
+  }
+
+  .perfil-titulo {
+    font-size: 1.5rem;
+  }
+
+  .perfil-avatar {
+    font-size: 4rem;
+  }
+
+  .info-value {
+    font-size: 1rem;
+  }
+
+  .btn-cerrar-sesion {
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
+  }
+}

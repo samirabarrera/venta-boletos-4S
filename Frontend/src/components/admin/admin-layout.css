@@ -1,0 +1,21 @@
+/* ===== ADMIN LAYOUT STYLES ===== */
+
+.admin-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+}
+
+.admin-page-content {
+  flex: 1;
+  width: 100%;
+  padding-top: 1rem;
+}
+
+/* Asegurar que el contenido no quede debajo del navbar */
+@media (max-width: 991px) {
+  .admin-page-content {
+    padding-top: 1.5rem;
+  }
+}

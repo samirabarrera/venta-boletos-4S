@@ -1,0 +1,225 @@
+/* Estilos generales del contenedor */
+.eventos-carousel {
+    perspective: 1000px;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.eventos-carousel .carousel-inner {
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px; 
+}
+
+.eventos-carousel .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0;
+    transition: all 0.6s ease;
+    width: 400px;
+    height: 100%;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Item Activo */
+.eventos-carousel .carousel-item.active {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    z-index: 10;
+    pointer-events: auto;
+}
+
+/* Estilos de las Tarjetas (Cards) de Evento */
+.eventos-carousel .evento-card {
+    height: 100%;
+    border-radius: 15px;
+    background-color: #2a2a2a;
+    color: white;
+}
+
+/* Estilo de la Imagen de la Tarjeta */
+.eventos-carousel .card-img-left {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 15px 0 0 15px;
+}
+
+.evento-card .card-title {
+    color: #FF4081;
+}
+
+.evento-card .buy-btn {
+    background-color: #C2185B;
+    border-color: #C2185B;
+    font-weight: bold;
+}
+
+.evento-card .buy-btn:hover {
+    background-color: #AD1457;
+    border-color: #AD1457;
+}
+
+/* Flechas de Navegación */
+.eventos-carousel .carousel-control-prev,
+.eventos-carousel .carousel-control-next {
+    width: 10%;
+    opacity: 1;
+    background: none;
+}
+
+.eventos-carousel .carousel-control-prev-icon,
+.eventos-carousel .carousel-control-next-icon {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(285deg) brightness(100%) contrast(100%);
+}
+
+/* Indicadores de Posición */
+.eventos-carousel .carousel-indicators button {
+    background-color: #F06292;
+}
+
+.eventos-carousel .carousel-indicators .active {
+    background-color: #C2185B;
+}
+
+/* Ajuste de colores para el texto principal */
+.text-pink-navbar {
+    color: #C2185B;
+}
+
+/* Header del Modal */
+.modal-header-custom {
+    background: linear-gradient(135deg, #b83280 0%, #9d2b6d 100%);
+    color: white;
+    border-bottom: none;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.modal-header-custom .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+/* Body del Modal */
+.modal-body-custom {
+    padding: 2rem;
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 1s ease;
+}
+
+.modal-body-custom h5 {
+    color: #b83280;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.evento-nombre {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #9d2b6d;
+    margin: 1rem 0;
+}
+
+.mensaje-confirmacion {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Footer del Modal */
+.modal-footer-custom {
+    border-top: none;
+    justify-content: center;
+    padding: 1rem 2rem 2rem;
+}
+
+.btn-cerrar-modal {
+    background-color: #b83280;
+    border-color: #9d2b6d;
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-cerrar-modal:hover {
+    background-color: #9d2b6d;
+    border-color: #7d1f57;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(184, 50, 128, 0.3);
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.eventos-page {
+    padding: 2rem 0;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+}
+
+.titulo-eventos {
+    text-align: center;
+    color: #b83280;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.evento-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.evento-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(184, 50, 128, 0.2) !important;
+}
+
+.evento-card .card-title {
+    color: #b83280;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.evento-card .card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+.btn-comprar {
+    background-color: #b83280;
+    border-color: #9d2b6d;
+    color: white;
+    font-weight: 600;
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-comprar:hover {
+    background-color: #9d2b6d;
+    border-color: #7d1f57;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(184, 50, 128, 0.3);
+}

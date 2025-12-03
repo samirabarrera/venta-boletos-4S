@@ -1,0 +1,128 @@
+/* ===== USER NAVBAR STYLES ===== */
+
+/* 1. Navbar Principal */
+.user-navbar {
+  background: linear-gradient(135deg, #b83280 0%, #9d2b6d 100%) !important;
+  box-shadow: 0 4px 12px rgba(184, 50, 128, 0.3);
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+}
+
+/* 2. Brand/Logo */
+.user-navbar .brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #ffffff !important;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.user-navbar .brand-logo:hover {
+  transform: scale(1.05);
+}
+
+.user-navbar .brand-icon {
+  font-size: 1.8rem;
+  animation: pulse 2s infinite;
+}
+
+.user-navbar .brand-text {
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 3. Navigation Links */
+.user-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-navbar .nav-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.user-navbar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.user-navbar .nav-link:hover .nav-icon {
+  transform: scale(1.2);
+}
+
+/* 4. Active Link Indicator */
+.user-navbar .active-link {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 5. Logout Button */
+.user-navbar .logout-btn {
+  color: #ffcccb !important;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.user-navbar .logout-btn:hover {
+  background-color: rgba(255, 82, 82, 0.2);
+  color: #ff6b6b !important;
+  transform: translateY(-2px);
+}
+
+/* 6. Navbar Toggle (Mobile) */
+.user-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.3);
+  padding: 0.5rem;
+}
+
+.user-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* 7. Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* 8. Responsive Design */
+@media (max-width: 991px) {
+  .user-navbar .nav-link {
+    margin: 0.3rem 0;
+  }
+
+  .user-navbar .logout-btn {
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+  }
+}
+
+/* 9. Smooth Scrolling Effect */
+.user-navbar.scrolled {
+  padding: 0.5rem 0;
+  box-shadow: 0 6px 20px rgba(157, 43, 109, 0.4);
+}

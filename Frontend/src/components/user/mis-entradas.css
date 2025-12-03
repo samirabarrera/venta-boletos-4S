@@ -1,0 +1,109 @@
+.mis-entradas-page {
+  padding: 2rem 0;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+}
+
+.titulo-mis-entradas {
+  text-align: center;
+  color: #b83280;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+/* Contenedor de la Tabla */
+.tabla-container {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(184, 50, 128, 0.1);
+  overflow: hidden;
+}
+
+.tabla-entradas {
+  margin-bottom: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabla-entradas thead {
+  background: linear-gradient(135deg, #b83280 0%, #9d2b6d 100%);
+  color: white;
+}
+
+.tabla-entradas thead th {
+  border: none;
+  padding: 1rem;
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tabla-entradas tbody tr {
+  transition: all 0.3s ease;
+}
+
+.tabla-entradas tbody tr:hover {
+  background-color: rgba(184, 50, 128, 0.05);
+  transform: scale(1.01);
+}
+
+.tabla-entradas tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-color: rgba(184, 50, 128, 0.1);
+}
+
+.tabla-entradas tbody td:first-child {
+  font-weight: 600;
+  color: #b83280;
+  text-align: center;
+}
+
+.tabla-entradas tbody td:nth-child(2) {
+  font-weight: 600;
+  color: #333;
+}
+
+.tabla-entradas tbody td:nth-child(3) {
+  color: #666;
+  text-align: center;
+}
+
+.tabla-entradas tbody td:nth-child(4) {
+  font-weight: 700;
+  color: #9d2b6d;
+}
+
+/* Mensaje cuando no hay entradas */
+.no-entradas {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(184, 50, 128, 0.1);
+}
+
+.no-entradas p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .titulo-mis-entradas {
+    font-size: 2rem;
+  }
+
+  .tabla-container {
+    padding: 1rem;
+  }
+
+  .tabla-entradas thead th,
+  .tabla-entradas tbody td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+}

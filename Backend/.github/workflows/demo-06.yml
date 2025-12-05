@@ -29,6 +29,8 @@ jobs:
 
       # 2. Ejecutar tests con coverage
       - name: Ejecutar tests con coverage
+        env: 
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         run: |
           npm run test:coverage
 

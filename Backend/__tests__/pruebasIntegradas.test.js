@@ -17,16 +17,12 @@ let createdEventId;
 let createdUserId;
 
 beforeAll(async () => {
-    // 1. Levantar DB Temporal (Testcontainers)
-    console.log('🚀 Iniciando contenedor PostgreSQL...');
     container = await new PostgreSqlContainer("postgres:15").start();
     const connectionUri = container.getConnectionUri();
-    console.log('✅ Contenedor iniciado');
 
     // 2. Parsear la URI para obtener las credenciales
     const url = new URL(connectionUri);
     
-    // 3. Configurar variables de entorno ANTES de importar cualquier módulo
     process.env.DB_USER = url.username;
     process.env.DB_HOST = url.hostname;
     process.env.DB_NAME = url.pathname.slice(1);
@@ -34,13 +30,11 @@ beforeAll(async () => {
     process.env.DB_PORT = url.port;
     process.env.JWT_SECRET = 'test-secret-key-12345';
 
-    // 4. Conexión directa para crear tablas
     const { Client } = pg;
     pgClient = new Client({ connectionString: connectionUri });
     await pgClient.connect();
-    console.log('📊 Cliente conectado a la base de datos de pruebas');
 
-    // 5. Crear esquema
+    //DB esquema
     await pgClient.query(`
         CREATE TABLE users (
             user_id SERIAL PRIMARY KEY,
@@ -69,24 +63,17 @@ beforeAll(async () => {
             purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     `);
-    console.log('✅ Esquema de base de datos creado');
 
-    // 6. Ahora importar la app (usará las variables de entorno que configuramos)
     const appModule = await import('../index.js');
     app = appModule.default;
-    console.log('✅ Aplicación cargada y lista para pruebas\n');
 });
 
 afterAll(async () => {
-    console.log('\n🧹 Limpiando recursos...');
     if (pgClient) await pgClient.end();
     if (container) await container.stop();
-    console.log('✅ Recursos liberados');
 });
 
-describe('Requisitos 3 y 4: Integración y Seguridad', () => {
-
-    // --- REQUISITO: Register (201, usuario creado en DB) ---
+describe('Pruebas integradas', () => {
     test('1. Register -> Debe crear usuario en DB y retornar 201', async () => {
         const newUser = {
             name: 'Juan Perez',
@@ -124,7 +111,7 @@ describe('Requisitos 3 y 4: Integración y Seguridad', () => {
         expect(res.body.mensaje).toContain('ya existe');
     });
 
-    // --- REQUISITO: Login (200, token, no exponer password) ---
+    //Login (200, token)
     test('2. Login -> Retorna token y NO expone password', async () => {
         const res = await request(app).post('/api/user/login').send({
             email: 'juan@test.com',
@@ -136,7 +123,6 @@ describe('Requisitos 3 y 4: Integración y Seguridad', () => {
         expect(typeof res.body.token).toBe('string');
         userToken = res.body.token;
         
-        // Requisito: No exponer password
         expect(res.body.password).toBeUndefined();
         if (res.body.user) {
             expect(res.body.user).not.toHaveProperty('password');
@@ -153,7 +139,7 @@ describe('Requisitos 3 y 4: Integración y Seguridad', () => {
         expect(res.body.mensaje).toContain('incorrectos');
     });
 
-    // --- SETUP: Crear un Admin ---
+    //Crear un Admin
     test('Setup Admin', async () => {
         const bcrypt = (await import('bcryptjs')).default;
         const hashedPassword = await bcrypt.hash('admin123', 10);
@@ -172,7 +158,7 @@ describe('Requisitos 3 y 4: Integración y Seguridad', () => {
         adminToken = res.body.token;
     });
 
-    // --- REQUISITO: Seguridad (401 y 403) ---
+    //Seguridad con errores 401 y 403
     describe('Pruebas de Seguridad y Roles', () => {
         
         test('Debe rechazar acceso sin token (403)', async () => {
@@ -202,7 +188,7 @@ describe('Requisitos 3 y 4: Integración y Seguridad', () => {
         });
     });
 
-    // --- REQUISITO: Creación de Eventos ---
+    //Creación de evento
     test('3. Crear Evento -> 201 y guardado en DB', async () => {
         const buffer = Buffer.from('fake-image-data');
         
@@ -243,7 +229,7 @@ describe('Requisitos 3 y 4: Integración y Seguridad', () => {
         expect(res.status).toBe(403);
     });
 
-    // --- REQUISITO: Listar eventos ---
+    //Listar eventos
     test('4. Listar Eventos -> Debe retornar lista', async () => {
         const res = await request(app)
             .get('/api/events/misEventos')
@@ -258,7 +244,7 @@ describe('Requisitos 3 y 4: Integración y Seguridad', () => {
         expect(eventoEncontrado.tickets_remaining).toBe(100);
     });
 
-    // --- REQUISITO CRÍTICO: Compra de Ticket ---
+    //Compra de ticket
     test('5. Compra Ticket -> 201, Ticket en DB, Capacity decrementado', async () => {
         const ticketsAComprar = 2;
 

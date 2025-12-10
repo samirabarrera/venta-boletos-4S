@@ -70,7 +70,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
     if (pgClient) await pgClient.end();
-    if (container) await container.stop();
+    //if (container) await container.stop();
 });
 
 describe('Pruebas integradas', () => {
@@ -358,5 +358,4 @@ describe('Pruebas integradas', () => {
             .delete(`/api/events/misEventos/${tempEventId}`)
             .set('Authorization', `Bearer ${adminToken}`);
     });
-
 });
